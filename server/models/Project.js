@@ -9,8 +9,16 @@ const ProjectSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  url: {
+    type: String,
+  },
   projectHead: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+
+  projectHeadName: {
+    type: String,
     required: true,
   },
   clients: [
@@ -19,6 +27,9 @@ const ProjectSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
       },
       name: {
+        type: String,
+      },
+      role: {
         type: String,
       },
       projectRole: {
@@ -34,6 +45,9 @@ const ProjectSchema = mongoose.Schema({
       name: {
         type: String,
       },
+      role: {
+        type: String,
+      },
       projectRole: {
         type: String,
       },
@@ -41,7 +55,7 @@ const ProjectSchema = mongoose.Schema({
   ],
   createdOn: {
     type: Date,
-    required: Date.now,
+    default: Date.now,
   },
 });
 
