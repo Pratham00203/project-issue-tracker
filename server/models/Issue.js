@@ -13,6 +13,10 @@ const IssueSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  reporterName: {
+    type: String,
+    required: true,
+  },
   priority: {
     type: String,
     required: true,
