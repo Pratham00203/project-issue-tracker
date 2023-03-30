@@ -15,10 +15,14 @@
   margin: 0;
   padding: 0;
   font-family: CircularStdBook;
+  box-sizing: border-box;
 }
 
 .d-flex {
   display: flex;
+}
+.flex-col {
+  flex-direction: column;
 }
 
 .justify-center {
@@ -33,55 +37,591 @@ a {
   text-decoration: none;
 }
 
-.home-form {
-  height: 100vh;
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed !important;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+}
+
+/* background-color: rgb(7, 71, 166); */
+/* box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px; */
+/* background-color: rgb(0, 94, 235); */
+/* background-color: rgb(244, 245, 247); */
+/* background-color: rgb(235, 236, 240); */
+
+/* Login Page */
+.login-container {
   background-color: rgb(7, 71, 166);
+  padding: 100px;
 }
 
-.home-modal {
-  background-color: #fff;
-  border-radius: 3px;
+.login-form {
+  background: #fff;
   box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
+  border-radius: 4px;
   padding: 30px;
+  width: 400px;
+}
+
+.logo {
+  color: rgb(94, 108, 132);
   text-align: center;
+  gap: 5px;
+  margin-bottom: 50px;
 }
 
-.home-modal h2:first-of-type {
-  margin-top: 40px;
+.logo img {
+  width: 40px;
 }
 
-.home-modal h2 {
-  margin-bottom: 30px;
+.login-form form {
+  flex-direction: column;
+  gap: 30px;
 }
 
-.home-modal hr {
+.custom_input {
+  position: relative;
+}
+
+.custom_input input::placeholder {
+  opacity: 0;
+}
+
+.custom_input input,
+.custom_input select {
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+  border-radius: 0px;
+  border: 1px solid rgb(155, 156, 156);
+}
+
+.select_label {
+  margin-bottom: 4px;
+  color: rgb(7, 71, 166);
+}
+
+.custom_input select:focus {
+  border: 1px solid rgb(7, 71, 166);
+}
+
+.custom_input .custom_label {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  background-color: #fff;
+  transition: all 200ms ease;
+  font-size: 15px;
+  padding: 0px 3px;
+  pointer-events: none;
+}
+
+.custom_input input:focus {
+  outline: none;
+  border: 1px solid rgb(7, 71, 166);
+}
+
+.custom_input input:focus + .custom_label,
+.custom_input input:not(:placeholder-shown) + .custom_label {
+  top: -22px;
+  color: rgb(7, 71, 166);
+}
+
+.login-form form input[type="submit"],
+.verification-modal .form button,
+.register-form form input[type="submit"],
+.dashboard .create-project-btn {
+  background-color: rgb(7, 71, 166);
+  color: #fff;
   border: none;
-  border-top: 1px solid rgb(225, 225, 225);
-  margin: 35px 0 35px 0;
-}
-
-.home-modal button {
-  border: none;
+  width: 100%;
+  padding: 10px;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 200ms linear;
 }
 
-.home-modal .btn-container button:first-of-type {
-  color: #fff;
-  background-color: rgb(7, 71, 166);
-  padding: 10px 40px;
-}
-
-.home-modal .btn-container button:first-of-type:hover {
+.login-form form input[type="submit"]:hover,
+.verification-modal .form button:hover,
+.register-form form input[type="submit"]:hover,
+.dashboard .create-project-btn:hover {
   background-color: rgb(0, 94, 235);
 }
 
-.home-modal .btn-container button:last-of-type {
-  color: rgb(66, 82, 110);
-  background-color: rgb(244, 245, 247);
-  padding: 10px 30px;
+.login_other_btns {
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 10px;
+  color: rgb(7, 71, 166);
 }
 
-.home-modal .btn-container button:last-of-type:hover {
-  background-color: rgb(235, 236, 240);
+.password_field {
+  position: relative;
+}
+
+.password_field .show_password {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+  cursor: pointer;
+  width: 20px;
+}
+
+/* Auth Pages */
+.wrapper-container {
+  height: 100vh;
+  background: rgb(7, 71, 166);
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 60px;
+}
+
+.verification-modal .form {
+  width: 100%;
+}
+
+.verification-modal {
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  padding: 50px;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
+}
+
+.verification-modal > p,
+.register-form > p {
+  color: rgb(133, 134, 134);
+  text-align: center;
+}
+
+.mail-sent-modal img {
+  width: 50px;
+}
+
+/* Register Page */
+.register-container {
+  background-color: rgb(7, 71, 166);
+}
+
+.register-form {
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
+  border-radius: 5px;
+  width: 400px;
+  margin: 50px 0;
+}
+
+.register-form form {
+  flex-direction: column;
+  gap: 30px;
+}
+
+.register-form .logo {
+  margin-bottom: 10px;
+}
+
+.register-form > p {
+  margin-bottom: 40px;
+}
+
+nav {
+  justify-content: space-between;
+  position: relative;
+  padding: 10px 30px;
+  background-color: rgb(244, 245, 247);
+  border-bottom: 1px solid rgb(223, 225, 230);
+}
+
+nav .logo {
+  margin: 0;
+}
+
+nav .profile_photo {
+  width: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+nav .logout-menu {
+  position: absolute;
+  right: 30px;
+  top: 60px;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
+  padding: 15px 30px;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 7px;
+}
+
+nav .logout-menu hr {
+  border: none;
+  border-bottom: 1px solid rgb(221, 218, 218);
+  margin: 5px 0;
+}
+
+nav .logout-menu.active {
+  display: flex !important;
+}
+
+.dashboard header,
+.my-organization header {
+  background-color: rgb(244, 245, 247);
+  padding: 30px 30px 50px 30px;
+  border-bottom: 1px solid rgb(223, 225, 230);
+  font-size: 45px;
+}
+
+.dashboard main {
+  padding: 20px 30px;
+}
+
+.my-table {
+  width: 100%;
+}
+
+.my-table thead td,
+.my-table td a {
+  color: rgb(7, 71, 166);
+}
+
+.my-table td a {
+  color: rgb(133, 134, 134);
+  text-decoration: underline;
+}
+
+.my-table td {
+  padding: 15px 0;
+  font-size: 16px;
+  border-bottom: 1px solid rgb(223, 225, 230);
+}
+
+.no-projects p {
+  color: rgb(155, 156, 156);
+  margin: 40px 0;
+}
+
+.no-projects img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.dashboard .create-project-btn {
+  width: fit-content;
+  padding: 12px 20px;
+}
+
+.project-form,
+.organization-form {
+  padding: 30px;
+}
+.breadcrumb {
+  color: rgb(94, 108, 132);
+  margin-bottom: 10px;
+}
+
+.project-form h1 {
+  font-size: 45px;
+}
+
+.my-form form {
+  padding: 30px 0;
+  width: 700px;
+  gap: 30px;
+}
+
+.my-form form label p {
+  color: rgb(94, 108, 132);
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.my-form form label input,
+.add-role-modal input {
+  padding: 4px;
+  width: 100%;
+  font-size: 16px;
+  background-color: rgb(244, 245, 247);
+  color: rgb(23, 43, 77);
+  border: 1px solid rgb(223, 225, 230);
+  border-radius: 3px;
+}
+
+.my-form form label input:focus,
+.search-bar input:focus,
+.add-role-modal input:focus {
+  outline: none;
+  background-color: #fff;
+  border: 1px solid rgb(76, 154, 255);
+  box-shadow: rgb(76 154 255) 0px 0px 0px 1px;
+}
+
+.my-form form input[type="submit"] {
+  background-color: rgb(7, 71, 166);
+  color: #fff;
+  width: fit-content;
+  font-size: 16px;
+  border-radius: 3px;
+  border: none;
+  padding: 7px 15px;
+  cursor: pointer;
+  transition: background-color 300ms linear;
+}
+
+.my-form form input[type="submit"]:hover {
+  background-color: rgb(0, 94, 235);
+}
+
+.my-organization h1 {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.my-organization .organization-details h2 {
+  font-size: 20px;
+}
+
+.my-organization .organization-details p,
+.my-organization main > h3 {
+  font-size: 18px;
+}
+
+.red-btn {
+  background-color: rgb(241, 37, 37) !important;
+  margin-left: 20px;
+}
+
+.my-organization button,
+.my-organization .update-org-btn,
+.search-bar button,
+.search-results .result button,
+.project-dashboard .dashboard-btns button,
+.project-dashboard .dashboard-btns a,
+.join-form-btn,
+.add-project-members-modal .members .member button,
+.add-role-modal button {
+  font-size: 16px;
+  color: #fff;
+  background-color: rgb(0, 94, 235);
+  border: none;
+  padding: 7px 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.my-organization .update-org-btn {
+  margin-right: 20px;
+  padding: 9px 15px;
+}
+
+.my-organization main {
+  padding: 30px;
+}
+
+.join-org-link span {
+  background-color: #fff;
+  border: 1px solid rgb(223, 225, 230);
+  padding: 7px 10px;
+  cursor: copy;
+}
+
+.bg-dark {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 97;
+  background-color: rgba(0, 0, 0, 0.406);
+}
+
+.add-project-members-modal {
+  width: 1000px;
+  position: fixed;
+  z-index: 99;
+  top: 50px;
+  background-color: #fff;
+  padding: 40px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
+  border-radius: 5px;
+}
+
+.add-project-members-modal .members {
+  font-size: 18px;
+  margin: 20px 0;
+  padding: 20px 0;
+  border-top: 1px solid rgb(193, 190, 190);
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.add-project-members-modal .members .member {
+  width: 100%;
+  gap: 5px;
+  border-bottom: 1px solid rgb(223, 225, 230);
+  padding: 10px;
+}
+
+.add-project-members-modal .members .member img {
+  width: 30px;
+}
+
+.project-dashboard header {
+  padding: 10px 30px;
+  padding-bottom: 0;
+}
+
+.project-dashboard .issue-dashboard {
+  padding: 0 30px;
+}
+
+.issue-dashboard .search-bar {
+  margin: 20px 0;
+  border-radius: 3px;
+  background-color: rgb(244, 245, 247);
+  color: rgb(23, 43, 77);
+  border: 1px solid rgb(223, 225, 230);
+  width: 400px;
+  padding: 0 7px;
+}
+
+.issue-dashboard .search-bar input {
+  font-size: 16px;
+  padding: 5px;
+  border: none;
+}
+
+.issue-dashboard .search-bar input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.issue-dashboard .search-bar img {
+  width: 15px;
+  margin-right: 5px;
+}
+
+.status-select {
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(223, 225, 230);
+  font-size: 18px;
+  margin: 40px 0;
+  gap: 20px;
+}
+
+.status-select p {
+  cursor: pointer;
+  padding-bottom: 20px;
+  width: 100%;
+  color: rgb(23, 43, 77);
+}
+
+.status-select .backlog.active {
+  color: rgb(241, 37, 37);
+  border-bottom: 2px solid rgb(241, 37, 37);
+}
+
+.status-select .progress.active {
+  color: rgb(0, 94, 235);
+  border-bottom: 2px solid rgb(0, 94, 235);
+}
+
+.status-select .done.active {
+  color: rgb(5, 152, 5);
+  border-bottom: 2px solid rgb(5, 152, 5);
+}
+
+.issues > div {
+  background-color: rgb(244, 245, 247);
+  border: 1px solid rgb(223, 225, 230);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 50px;
+  border-radius: 3px;
+}
+
+.issues > div .issue {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.issues > div .issue p:last-child {
+  margin-top: 15px;
+}
+
+.issues > div .issue p:last-child .high {
+  color: rgb(241, 37, 37);
+}
+
+.issues > div .issue p:last-child .medium {
+  color: orange;
+}
+
+.issues > div .issue p:last-child .low {
+  color: rgb(5, 152, 5);
+}
+
+.issue-download-btn {
+  font-size: 18px;
+  color: #fff;
+  background-color: rgb(5, 152, 5);
+  border: none;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+.search-bar input {
+  width: 100%;
+  background-color: rgb(244, 245, 247);
+}
+
+.add-role-modal {
+  width: 500px;
+  position: fixed;
+  z-index: 99;
+  background-color: #fff;
+  padding: 40px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
+  border-radius: 5px;
+  top: 0;
+}
+
+.add-role-modal h1 {
+  margin-bottom: 20px;
+}
+
+.add-role-modal label {
+  display: block;
+  margin-bottom: 4px;
+  color: rgb(0, 94, 235);
+}
+
+.add-role-modal input {
+  margin-bottom: 4px;
+}
+
+.add-role-modal p {
+  color: rgb(94, 108, 132);
+  font-size: 14px;
+  margin-bottom: 15px;
 }

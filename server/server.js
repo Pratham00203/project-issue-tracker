@@ -17,6 +17,7 @@ app.use("/api/auth/", require("./routes/auth"));
 app.use("/api/issue/", require("./routes/issue"));
 app.use("/api/project/", require("./routes/project"));
 app.use("/api/user/", require("./routes/user"));
+app.use("/api/organization", require("./routes/organization"));
 
 app.get("/", (req, res) => {
   res.send("Server Running");

@@ -7,7 +7,6 @@ const ProjectSchema = mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   url: {
     type: String,
@@ -21,6 +20,9 @@ const ProjectSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  deadline: {
+    type: String,
+  },
   clients: [
     {
       id: {
@@ -32,8 +34,15 @@ const ProjectSchema = mongoose.Schema({
       role: {
         type: String,
       },
+      email: {
+        type: String,
+      },
       projectRole: {
         type: String,
+      },
+      addedOn: {
+        type: Date,
+        default: Date.now,
       },
     },
   ],
@@ -50,6 +59,13 @@ const ProjectSchema = mongoose.Schema({
       },
       projectRole: {
         type: String,
+      },
+      email: {
+        type: String,
+      },
+      addedOn: {
+        type: Date,
+        default: Date.now,
       },
     },
   ],

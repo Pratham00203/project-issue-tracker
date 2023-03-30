@@ -9,9 +9,7 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  organizationName: {
-    type: String,
-  },
+
   email: {
     type: String,
     required: true,

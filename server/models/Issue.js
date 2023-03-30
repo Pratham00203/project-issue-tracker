@@ -58,12 +58,26 @@ const IssueSchema = mongoose.Schema({
     type: String,
     default: "Backlog",
   },
-  responseMsg: {
-    type: String,
-  },
-  responseSentOn: {
-    type: Date,
-  },
+  comments: [
+    {
+      name: {
+        type: String,
+        required: true,
+      },
+      projectRole: {
+        type: String,
+        required: true,
+      },
+      commentBody: {
+        type: String,
+        required: true,
+      },
+      postedOn: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("issue", IssueSchema);

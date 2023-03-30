@@ -42,7 +42,7 @@ router.post(
       } = req.body;
       let reporter = req.user.id;
       let user = await User.findById(req.user.id, { name: 1 });
-      let reportName = user.name;
+      let reporterName = user.name;
       let issue = new Issue({
         shortSummary,
         description,
@@ -51,7 +51,7 @@ router.post(
         assignees,
         status,
         reporter,
-        reportName,
+        reporterName,
         projectId: req.params.projectid,
         attachments,
       });
@@ -161,6 +161,42 @@ router.delete("/delete/issue/:issueid", auth, async (req, res) => {
     await Issue.findByIdAndDelete(req.params.issueid);
 
     return res.status(200).json({ msg: "Issue Deleted" });
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).json({ error: "Server Error" });
+  }
+});
+
+// @route    GET api/issue/:projectid/download/issues/all
+// @desc     Get all issues to download
+// @access   Private
+router.get("/:projectid/download/issues/all", auth, async (req, res) => {
+  try {
+    const issues = await Issue.find(
+      { projectId: req.params.projectid, status: { $ne: "Closed" } },
+      { reporter: 0, projectId: 0, responseMsg: 0, responseSentOn: 0 }
+    );
+
+    let downloadIssues = [];
+
+    issues.forEach((i) => {
+      let obj = {
+        "Short Summary": i["shorSummary"],
+        Description: i["description"],
+        "Reported By": i["reporterName"],
+        Priority: i["priority"],
+        "Estimated Time to Complete (In Hours)": i["estimateInHours"],
+        "Assigned To": i["assignees"],
+        Attachments: i["attachments"],
+        "Created On": i["createdOn"],
+        Status: i["status"],
+      };
+      downloadIssues.push(obj);
+    });
+
+    return res.status(200).json({
+      downloadIssues,
+    });
   } catch (error) {
     console.error(error.message);
     return res.status(500).json({ error: "Server Error" });
