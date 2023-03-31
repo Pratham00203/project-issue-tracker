@@ -38,7 +38,7 @@ export default function AddRole({
     try {
       const res = await axios({
         method: "put",
-        url: `http://localhost:5000/api/project/add/role/${projectid}/${selectedUser.email}`,
+        url: `https://trackify-backend.onrender.com/api/project/add/role/${projectid}/${selectedUser.email}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },

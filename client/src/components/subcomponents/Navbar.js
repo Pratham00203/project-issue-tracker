@@ -41,7 +41,7 @@ export default function Navbar() {
     try {
       const res = await axios({
         method: "get",
-        url: "http://localhost:5000/api/organization/check-existence",
+        url: "https://trackify-backend.onrender.com/api/organization/check-existence",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },

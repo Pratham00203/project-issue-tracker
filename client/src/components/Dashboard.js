@@ -22,7 +22,7 @@ export default function Dashboard() {
     try {
       let res = await axios({
         method: "get",
-        url: "http://localhost:5000/api/auth/",
+        url: "https://trackify-backend.onrender.com/api/auth/",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -43,7 +43,7 @@ export default function Dashboard() {
     try {
       const res = await axios({
         method: "get",
-        url: "http://localhost:5000/api/project/get/projects/all",
+        url: "https://trackify-backend.onrender.com/api/project/get/projects/all",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },

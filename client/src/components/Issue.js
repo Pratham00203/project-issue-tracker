@@ -37,7 +37,7 @@ export default function Issue() {
 
   const copyLink = () => {
     navigator.clipboard.writeText(
-      `http://localhost:3000/project/${projectid}/issue/${issueid}`
+      `https://trackify-react.netlify.app/project/${projectid}/issue/${issueid}`
     );
     setCopy(true);
     setTimeout(() => {
@@ -56,7 +56,7 @@ export default function Issue() {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/issue/${projectid}/${issueid}`,
+        url: `https://trackify-backend.onrender.com/api/issue/${projectid}/${issueid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -75,7 +75,7 @@ export default function Issue() {
       } else {
         const res = await axios({
           method: "post",
-          url: `http://localhost:5000/api/issue/${projectid}/${issueid}/add/comment`,
+          url: `https://trackify-backend.onrender.com/api/issue/${projectid}/${issueid}/add/comment`,
           headers: {
             "x-auth-token": localStorage.getItem("token"),
           },
@@ -100,7 +100,7 @@ export default function Issue() {
     try {
       const res = await axios({
         method: "delete",
-        url: `http://localhost:5000/api/issue/delete/issue/${issueid}`,
+        url: `https://trackify-backend.onrender.com/api/issue/delete/issue/${issueid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -116,7 +116,7 @@ export default function Issue() {
     try {
       const res = await axios({
         method: "delete",
-        url: `http://localhost:5000/api/issue/${issueid}/delete/comment/${comment._id}`,
+        url: `https://trackify-backend.onrender.com/api/issue/${issueid}/delete/comment/${comment._id}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },

@@ -27,7 +27,7 @@ export default function JoinForm({ option }) {
       setIsLoading(true);
       let res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/organization/check-user/${organizationid}/${email.current.value}`,
+        url: `https://trackify-backend.onrender.com/api/organization/check-user/${organizationid}/${email.current.value}`,
       });
 
       if (res.status === 200) {
@@ -48,7 +48,7 @@ export default function JoinForm({ option }) {
       setIsLoading(true);
       let res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/project/check-user/${email.current.value}/${projectid}`,
+        url: `https://trackify-backend.onrender.com/api/project/check-user/${email.current.value}/${projectid}`,
         data: {
           email: email.current.value,
         },
@@ -71,7 +71,7 @@ export default function JoinForm({ option }) {
     try {
       const res = await axios({
         method: "put",
-        url: `http://localhost:5000/api/organization/add/user/${organizationid}`,
+        url: `https://trackify-backend.onrender.com/api/organization/add/user/${organizationid}`,
         data: {
           email: email.current.value,
         },
@@ -89,7 +89,7 @@ export default function JoinForm({ option }) {
     try {
       const res = await axios({
         method: "post",
-        url: `http://localhost:5000/api/project/${projectid}/add/member/${email.current.value}`,
+        url: `https://trackify-backend.onrender.com/api/project/${projectid}/add/member/${email.current.value}`,
       });
       if (res.data.msg === "Member Added to the project") {
         setIsVerified(true);

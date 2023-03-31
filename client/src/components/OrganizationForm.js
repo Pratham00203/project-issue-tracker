@@ -21,7 +21,7 @@ export default function OrganizationForm({ option }) {
     try {
       const res = await axios({
         method: "get",
-        url: "http://localhost:5000/api/organization/my-organization",
+        url: "https://trackify-backend.onrender.com/api/organization/my-organization",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -43,7 +43,7 @@ export default function OrganizationForm({ option }) {
     try {
       const res = await axios({
         method: "post",
-        url: "http://localhost:5000/api/organization/create",
+        url: "https://trackify-backend.onrender.com/api/organization/create",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -63,7 +63,7 @@ export default function OrganizationForm({ option }) {
     try {
       const res = await axios({
         method: "put",
-        url: "http://localhost:5000/api/organization/update/details",
+        url: "https://trackify-backend.onrender.com/api/organization/update/details",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },

@@ -31,7 +31,7 @@ export default function AddProjectMember({
     try {
       const res = await axios({
         method: "get",
-        url: "http://localhost:5000/api/organization/get/members",
+        url: "https://trackify-backend.onrender.com/api/organization/get/members",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -47,7 +47,7 @@ export default function AddProjectMember({
     try {
       let res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/project/check-user/${email}/${projectid}`,
+        url: `https://trackify-backend.onrender.com/api/project/check-user/${email}/${projectid}`,
       });
 
       if (res.status === 200) {
@@ -63,7 +63,7 @@ export default function AddProjectMember({
     try {
       const res = await axios({
         method: "post",
-        url: `http://localhost:5000/api/project/${projectid}/add/member/${email}`,
+        url: `https://trackify-backend.onrender.com/api/project/${projectid}/add/member/${email}`,
       });
       toast.success(res.data.msg);
     } catch (error) {

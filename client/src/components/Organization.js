@@ -22,7 +22,7 @@ export default function Organization() {
     try {
       const res = await axios({
         method: "get",
-        url: "http://localhost:5000/api/organization/my-organization",
+        url: "https://trackify-backend.onrender.com/api/organization/my-organization",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -49,7 +49,7 @@ export default function Organization() {
       if (res) {
         res = await axios({
           method: "delete",
-          url: `http://localhost:5000/api/organization/remove/user/${organization._id}/${email}`,
+          url: `https://trackify-backend.onrender.com/api/organization/remove/user/${organization._id}/${email}`,
           headers: {
             "x-auth-token": localStorage.getItem("token"),
           },
@@ -82,7 +82,7 @@ export default function Organization() {
       if (res) {
         res = await axios({
           method: "put",
-          url: `http://localhost:5000/api/organization/change-head/${organization._id}`,
+          url: `https://trackify-backend.onrender.com/api/organization/change-head/${organization._id}`,
           headers: {
             "x-auth-token": localStorage.getItem("token"),
           },
@@ -134,7 +134,7 @@ export default function Organization() {
       if (res) {
         res = await axios({
           method: "delete",
-          url: `http://localhost:5000/api/organization/delete/${organization._id}`,
+          url: `https://trackify-backend.onrender.com/api/organization/delete/${organization._id}`,
           headers: {
             "x-auth-token": localStorage.getItem("token"),
           },
@@ -174,7 +174,7 @@ export default function Organization() {
                   </p>
                   <p className='join-org-link'>
                     <b>Join Link : </b>
-                    <span>{`http://localhost:3000/organization/join/${organization._id}`}</span>
+                    <span>{`https://trackify-react.netlify.app/organization/join/${organization._id}`}</span>
                   </p>
                 </div>
               )}

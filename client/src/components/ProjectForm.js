@@ -27,7 +27,7 @@ export default function ProjectForm({ option }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/project/get/${projectid}`,
+        url: `https://trackify-backend.onrender.com/api/project/get/${projectid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -67,7 +67,7 @@ export default function ProjectForm({ option }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/project/check/project/${projectDetails.name}`,
+        url: `https://trackify-backend.onrender.com/api/project/check/project/${projectDetails.name}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -85,7 +85,7 @@ export default function ProjectForm({ option }) {
     try {
       const res = await axios({
         method: "post",
-        url: "http://localhost:5000/api/project/create/new",
+        url: "https://trackify-backend.onrender.com/api/project/create/new",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -108,7 +108,7 @@ export default function ProjectForm({ option }) {
     try {
       const res = await axios({
         method: "put",
-        url: `http://localhost:5000/api/project/update/${projectid}`,
+        url: `https://trackify-backend.onrender.com/api/project/update/${projectid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },

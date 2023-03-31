@@ -22,7 +22,7 @@ export default function EmailForm({ option }) {
       setIsLoading(true);
       let res = await axios({
         method: "post",
-        url: "http://localhost:5000/api/auth/check-email/registration",
+        url: "https://trackify-backend.onrender.com/api/auth/check-email/registration",
         data: {
           email: email.current.value,
         },
@@ -45,7 +45,7 @@ export default function EmailForm({ option }) {
       setIsLoading(true);
       let res = await axios({
         method: "post",
-        url: "http://localhost:5000/api/auth/check-email/forgot-password",
+        url: "https://trackify-backend.onrender.com/api/auth/check-email/forgot-password",
         data: {
           email: email.current.value,
         },

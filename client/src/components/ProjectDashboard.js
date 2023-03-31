@@ -24,7 +24,7 @@ export default function ProjectDashboard() {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/project/get/${projectid}`,
+        url: `https://trackify-backend.onrender.com/api/project/get/${projectid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -40,7 +40,7 @@ export default function ProjectDashboard() {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/issue/${projectid}/issues/all`,
+        url: `https://trackify-backend.onrender.com/api/issue/${projectid}/issues/all`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -57,7 +57,7 @@ export default function ProjectDashboard() {
       setIsDownloading(true);
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/issue/${projectid}/download/issues/all`,
+        url: `https://trackify-backend.onrender.com/api/issue/${projectid}/download/issues/all`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },

@@ -41,7 +41,7 @@ export default function IssueForm({ option }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/issue/${projectid}/${issueid}`,
+        url: `https://trackify-backend.onrender.com/api/issue/${projectid}/${issueid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -64,7 +64,7 @@ export default function IssueForm({ option }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/project/get/company-people/${projectid}`,
+        url: `https://trackify-backend.onrender.com/api/project/get/company-people/${projectid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -133,7 +133,7 @@ export default function IssueForm({ option }) {
     try {
       const res = await axios({
         method: "post",
-        url: `http://localhost:5000/api/issue/${projectid}/create/new`,
+        url: `https://trackify-backend.onrender.com/api/issue/${projectid}/create/new`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -158,7 +158,7 @@ export default function IssueForm({ option }) {
     try {
       const res = await axios({
         method: "put",
-        url: `http://localhost:5000/api/issue/update/issue/${issueid}`,
+        url: `https://trackify-backend.onrender.com/api/issue/update/issue/${issueid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },

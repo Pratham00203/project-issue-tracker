@@ -28,7 +28,7 @@ export default function Project() {
     try {
       const res = await axios({
         method: "get",
-        url: `http://localhost:5000/api/project/get/${projectid}`,
+        url: `https://trackify-backend.onrender.com/api/project/get/${projectid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -53,7 +53,7 @@ export default function Project() {
     try {
       const res = await axios({
         method: "get",
-        url: "http://localhost:5000/api/organization/check-existence",
+        url: "https://trackify-backend.onrender.com/api/organization/check-existence",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -82,7 +82,7 @@ export default function Project() {
     try {
       const res = await axios({
         method: "delete",
-        url: `http://localhost:5000/api/project/${projectid}/remove/member/${email}`,
+        url: `https://trackify-backend.onrender.com/api/project/${projectid}/remove/member/${email}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -114,7 +114,7 @@ export default function Project() {
     try {
       const res = await axios({
         method: "put",
-        url: `http://localhost:5000/api/project/update/${projectid}/change-project-head/${email}`,
+        url: `https://trackify-backend.onrender.com/api/project/update/${projectid}/change-project-head/${email}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -145,7 +145,7 @@ export default function Project() {
     try {
       const res = await axios({
         method: "delete",
-        url: `http://localhost:5000/api/project/delete/${projectid}`,
+        url: `https://trackify-backend.onrender.com/api/project/delete/${projectid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
@@ -223,7 +223,7 @@ export default function Project() {
                   </p>
                   <p className='join-org-link'>
                     <b>Join Link : </b>
-                    <span>{`http://localhost:3000/project/join/${project._id}`}</span>
+                    <span>{`https://trackify-react.netlify.app/project/join/${project._id}`}</span>
                   </p>
                 </div>
               )}

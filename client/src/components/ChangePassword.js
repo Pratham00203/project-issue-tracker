@@ -36,7 +36,7 @@ export default function ChangePassword() {
     try {
       let res = await axios({
         method: "put",
-        url: "http://localhost:5000/api/auth/change-password",
+        url: "https://trackify-backend.onrender.com/api/auth/change-password",
         data: {
           email: email,
           password: password.current.value,

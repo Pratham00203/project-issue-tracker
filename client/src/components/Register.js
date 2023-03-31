@@ -48,7 +48,7 @@ export default function Register() {
     try {
       let res = await axios({
         method: "post",
-        url: "http://localhost:5000/api/auth/register",
+        url: "https://trackify-backend.onrender.com/api/auth/register",
         data: {
           email: email.current.value,
           password: password.current.value,
