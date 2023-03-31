@@ -236,7 +236,10 @@ select:focus {
 
 nav {
   justify-content: space-between;
-  position: relative;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 3;
   padding: 10px 30px;
   background-color: rgb(244, 245, 247);
   border-bottom: 1px solid rgb(223, 225, 230);
@@ -348,7 +351,8 @@ nav .logout-menu.active {
 }
 
 .my-form form label input,
-.add-role-modal input {
+.add-role-modal input,
+.my-form label select {
   padding: 4px;
   width: 100%;
   font-size: 16px;
@@ -567,16 +571,16 @@ nav .logout-menu.active {
   margin-top: 15px;
 }
 
-.issues > div .issue p:last-child .high {
-  color: rgb(241, 37, 37);
+.high {
+  color: rgb(241, 37, 37) !important;
 }
 
-.issues > div .issue p:last-child .medium {
-  color: orange;
+.medium {
+  color: orange !important;
 }
 
-.issues > div .issue p:last-child .low {
-  color: rgb(5, 152, 5);
+.low {
+  color: rgb(5, 152, 5) !important;
 }
 
 .issue-download-btn {
@@ -624,4 +628,234 @@ nav .logout-menu.active {
   color: rgb(94, 108, 132);
   font-size: 14px;
   margin-bottom: 15px;
+}
+
+.assignees-field {
+  padding: 7px;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid rgb(223, 225, 230);
+  border-radius: 3px;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.assignees-field .assignee {
+  background-color: rgb(235, 236, 240);
+  color: rgb(23, 43, 77);
+  font-size: 15px;
+  padding: 5px 7px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 300ms linear;
+  position: relative;
+  z-index: 1;
+}
+
+.assignees-field .assignee:hover {
+  background-color: rgb(223, 225, 230);
+}
+
+.assignees-options {
+  width: 100%;
+  border: 1px solid rgb(223, 225, 230);
+  padding: 15px 7px;
+  gap: 5px;
+  color: rgb(23, 43, 77);
+  position: absolute;
+  z-index: 99;
+  background-color: #fff;
+}
+
+.assignees-options .a-option {
+  cursor: pointer;
+  width: 100%;
+  padding: 3px 7px;
+}
+
+.assignees-options .a-option:hover {
+  background-color: rgb(235, 236, 240);
+}
+
+.assignees-options .a-option span {
+  color: rgb(94, 108, 132);
+}
+
+.issue-section {
+  padding: 50px 30px;
+}
+
+.issue-section header button,
+header {
+  color: #42526e;
+  font-size: 16px;
+}
+
+.issue-section header button {
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.issue-section header button:not(:disabled):active {
+  color: rgb(0, 82, 204);
+  background-color: rgb(210, 229, 254);
+}
+
+.issue-section header button:not(:disabled):hover {
+  background-color: rgb(235, 236, 240);
+}
+
+.issue-section header a,
+.comment-form button {
+  background-color: rgb(0, 94, 235);
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.issue-section header button img {
+  width: 16px;
+}
+
+.issue-main {
+  margin-top: 30px;
+  position: relative;
+  gap: 30px;
+}
+
+.issue-main main > h1 {
+  font-size: 25px;
+  margin-bottom: 15px;
+  color: rgb(23, 43, 77);
+}
+
+.issue-main main .i-description {
+  margin-bottom: 30px;
+}
+
+.issue-main main .i-description p,
+.issue-main main .priority p,
+.issue-main main .status p,
+.issue-main main .issue-assignees p,
+.issue-main main .estimate p,
+.issue-main main .reporter p {
+  color: rgb(23, 43, 77);
+}
+
+.issue-main main .i-description > p:first-child,
+.issue-main main .priority p:first-child,
+.issue-main main .status p:first-child,
+.issue-main main .issue-assignees p:first-child,
+.issue-main main .estimate p:first-child,
+.issue-main main .reporter p:first-child {
+  font-weight: bold;
+  color: rgb(94, 108, 132);
+  margin-bottom: 8px;
+  margin-top: 30px;
+}
+
+.issue-main main .issue-assignees {
+  margin-bottom: 30px;
+}
+
+.issue-main main .reporter p:last-child,
+.issue-main main .issue-assignees .i-assignee {
+  background-color: rgb(235, 236, 240);
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.issue-main main .i-dates {
+  color: rgb(94, 108, 132);
+  font-size: 13px;
+}
+
+.issue-main aside {
+  border-left: 1px solid rgb(221, 218, 218);
+  padding-left: 20px;
+}
+
+.issue-main aside .comments-section {
+  position: sticky;
+  top: 100px;
+}
+
+.issue-main aside .comments-section h1 {
+  margin-bottom: 20px;
+}
+
+.comments-section .comment-form img,
+.comment img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.comments-section .comment-form textarea {
+  width: 100%;
+  height: 80px;
+  resize: none;
+  padding: 8px 12px 9px;
+  border: 1px solid rgb(223, 225, 230);
+  background-color: rgb(244, 245, 247);
+  font-size: 15px;
+  border-radius: 3px;
+  color: rgb(23, 43, 77);
+}
+
+.comments-section .comment-form textarea:focus {
+  outline: none;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(76, 154, 255);
+  box-shadow: rgb(76, 154, 255) 0px 0px 0px 1px;
+}
+
+.comments-section .comment-form .tip {
+  color: rgb(94, 108, 132);
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.comments-section .comment-form .tip span {
+  padding: 0px 4px;
+  border-radius: 2px;
+  color: rgb(23, 43, 77);
+  font-weight: bold;
+  background: rgb(223, 225, 230);
+}
+
+.comments-section .comments {
+  margin-top: 30px;
+}
+
+.comments-section .comments .comment p {
+  color: rgb(66, 82, 110);
+  font-weight: bold;
+}
+
+.comments-section .comments .comment p:first-child span,
+.comments-section .comments .comment .comment-time {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.comments-section .comments .comment .comment-body {
+  color: rgb(23, 43, 77);
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.comments-section .comments .comment button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: red;
 }

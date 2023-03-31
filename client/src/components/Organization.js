@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import UserContext from "../context/UserContext";
 import moment from "moment";
+import Spinner from "./subcomponents/Spinner";
 
 export default function Organization() {
   useEffect(() => {
@@ -243,7 +244,7 @@ export default function Organization() {
           </div>
         )
       ) : (
-        <h1>Loading...</h1>
+        <Spinner />
       )}
     </>
   );

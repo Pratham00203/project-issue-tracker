@@ -18,6 +18,8 @@ import OrganizationForm from "./components/OrganizationForm";
 import ProjectDashboard from "./components/ProjectDashboard";
 import Project from "./components/Project";
 import JoinForm from "./components/JoinForm";
+import IssueForm from "./components/IssueForm";
+import Issue from "./components/Issue";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -136,6 +138,33 @@ function App() {
           element={
             <PrivateRoute>
               <Project />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/project/:projectid/create/issue/new'
+          element={
+            <PrivateRoute>
+              <IssueForm option='Create' />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/project/:projectid/update/issue/:issueid'
+          element={
+            <PrivateRoute>
+              <IssueForm option='Update' />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/project/:projectid/issue/:issueid'
+          element={
+            <PrivateRoute>
+              <Issue />
             </PrivateRoute>
           }
         />

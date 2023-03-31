@@ -33,7 +33,11 @@ const IssueSchema = mongoose.Schema({
       name: {
         type: String,
       },
+
       projectRole: {
+        type: String,
+      },
+      email: {
         type: String,
       },
     },
@@ -42,14 +46,13 @@ const IssueSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  updatedOn: {
+    type: Date,
+  },
   closedOn: {
     type: Date,
   },
-  attachments: [
-    {
-      type: String,
-    },
-  ],
+
   projectId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -60,13 +63,16 @@ const IssueSchema = mongoose.Schema({
   },
   comments: [
     {
+      userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+      },
       name: {
         type: String,
         required: true,
       },
       projectRole: {
         type: String,
-        required: true,
       },
       commentBody: {
         type: String,

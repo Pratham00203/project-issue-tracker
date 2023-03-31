@@ -344,4 +344,20 @@ router.put("/add/role/:projectid/:emailid", auth, async (req, res) => {
   }
 });
 
+// @route    GET api/project/get/company-people/:projectid
+// @desc     Get Company members of a project
+// @access   Private
+router.get("/get/company-people/:projectid", auth, async (req, res) => {
+  try {
+    const members = await Project.findById(req.params.projectid, {
+      companyPeople: 1,
+    });
+
+    return res.status(200).json({ members: members.companyPeople });
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).json({ error: "Server Error" });
+  }
+});
+
 module.exports = router;

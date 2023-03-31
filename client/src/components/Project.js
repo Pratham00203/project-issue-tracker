@@ -7,6 +7,7 @@ import axios from "axios";
 import AddProjectMember from "./subcomponents/AddProjectMember";
 import AddRole from "./subcomponents/AddRole";
 import { toast } from "react-hot-toast";
+import Spinner from "./subcomponents/Spinner";
 
 export default function Project() {
   const { projectid } = useParams();
@@ -349,7 +350,7 @@ export default function Project() {
           </div>
         )
       ) : (
-        <h1>Loading...</h1>
+        <Spinner />
       )}
     </>
   );

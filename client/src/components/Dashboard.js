@@ -5,6 +5,7 @@ import boxImg from "../assets/images/box.png";
 import UserContext from "../context/UserContext";
 import axios from "axios";
 import moment from "moment";
+import Spinner from "./subcomponents/Spinner";
 
 export default function Dashboard() {
   const [projects, setProjects] = useState([]);
@@ -107,7 +108,7 @@ export default function Dashboard() {
               </table>
             )
           ) : (
-            <h1>Loading...</h1>
+            <Spinner />
           )}
         </main>
       </div>
