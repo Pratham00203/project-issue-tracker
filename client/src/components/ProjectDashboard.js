@@ -137,8 +137,12 @@ export default function ProjectDashboard() {
                     .filter((i) => {
                       return query.toLocaleLowerCase().trim() === ""
                         ? i
-                        : i.shortSummary.toLowerCase().includes(query) ||
-                            i.description.toLowerCase().includes(query);
+                        : i.shortSummary
+                            .toLowerCase()
+                            .includes(query.toLocaleLowerCase()) ||
+                            i.description
+                              .toLowerCase()
+                              .includes(query.toLocaleLowerCase());
                     })
                     .map((i) => {
                       return (
@@ -168,8 +172,12 @@ export default function ProjectDashboard() {
                     .filter((i) => {
                       return query.toLocaleLowerCase().trim() === ""
                         ? i
-                        : i.shortSummary.toLowerCase().includes(query) ||
-                            i.description.toLowerCase().includes(query);
+                        : i.shortSummary
+                            .toLowerCase()
+                            .includes(query.toLocaleLowerCase()) ||
+                            i.description
+                              .toLowerCase()
+                              .includes(query.toLocaleLowerCase());
                     })
                     .map((i) => {
                       return (
@@ -199,8 +207,12 @@ export default function ProjectDashboard() {
                     .filter((i) => {
                       return query.toLocaleLowerCase().trim() === ""
                         ? i
-                        : i.shortSummary.toLowerCase().includes(query) ||
-                            i.description.toLowerCase().includes(query);
+                        : i.shortSummary
+                            .toLowerCase()
+                            .includes(query.toLocaleLowerCase()) ||
+                            i.description
+                              .toLowerCase()
+                              .includes(query.toLocaleLowerCase());
                     })
                     .map((i) => {
                       return (

@@ -1,14 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "./subcomponents/Navbar";
 import TextEditor from "./subcomponents/TextEditor";
+import UserContext from "../context/UserContext";
 
 export default function IssueForm({ option }) {
   const { projectid, issueid } = useParams();
   const navigate = useNavigate();
   const [showAssigneesOption, setShowAssigneesOption] = useState(false);
+  const [project, setProject] = useState(null);
   const [projectMembers, setProjectMembers] = useState([]);
   const [issueDetails, setIssueDetails] = useState({
     shortSummary: "",
@@ -18,10 +20,12 @@ export default function IssueForm({ option }) {
     assignees: [],
   });
   const [description, setDescription] = useState("");
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     option === "Update" && loadIssueDetails();
     loadProjectMembers();
+    loadProject();
 
     window.addEventListener("click", handleSelectClick);
 
@@ -36,6 +40,22 @@ export default function IssueForm({ option }) {
     };
     //eslint-disable-next-line
   }, []);
+
+  const loadProject = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: `https://trackify-backend.onrender.com/api/project/get/${projectid}`,
+        headers: {
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      });
+
+      setProject(res.data.project);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const loadIssueDetails = async () => {
     try {
@@ -210,6 +230,7 @@ export default function IssueForm({ option }) {
               name='estimateInHours'
               value={issueDetails.estimateInHours}
               onChange={handleChange}
+              min={1}
             />
           </label>
           <label htmlFor='priority'>
@@ -237,7 +258,14 @@ export default function IssueForm({ option }) {
               onChange={handleChange}>
               <option value='Backlog'>Backlog</option>
               <option value='In Progress'>In Progress</option>
-              <option value='Done'>Done</option>
+              {option === "Update" ? (
+                project &&
+                project.projectHead === user.id && (
+                  <option value='Done'>Done</option>
+                )
+              ) : (
+                <option value='Done'>Done</option>
+              )}
             </select>
           </label>
           <label htmlFor='assignees' style={{ position: "relative" }}>

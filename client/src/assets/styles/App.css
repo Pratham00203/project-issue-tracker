@@ -57,6 +57,7 @@ select:focus {
 .login-container {
   background-color: rgb(7, 71, 166);
   padding: 100px;
+  height: 100vh;
 }
 
 .login-form {

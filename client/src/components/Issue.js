@@ -141,9 +141,11 @@ export default function Issue() {
             style={{ justifyContent: "space-between" }}>
             <p>Issue - {issueid}</p>
             <div className='header-btns d-flex' style={{ gap: "15px" }}>
-              <Link to={`/project/${projectid}/update/issue/${issueid}`}>
-                Update
-              </Link>
+              {user.role !== "Client" && (
+                <Link to={`/project/${projectid}/update/issue/${issueid}`}>
+                  Update
+                </Link>
+              )}
               <button
                 className='d-flex align-center'
                 style={{ gap: "7px" }}
