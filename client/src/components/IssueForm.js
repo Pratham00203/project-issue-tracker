@@ -258,7 +258,7 @@ export default function IssueForm({ option }) {
               onChange={handleChange}>
               <option value='Backlog'>Backlog</option>
               <option value='In Progress'>In Progress</option>
-              {option === "Update" ? (
+              {option === "Update" && issueDetails.priority === "High" ? (
                 project &&
                 project.projectHead === user.id && (
                   <option value='Done'>Done</option>

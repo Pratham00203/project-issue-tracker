@@ -153,9 +153,11 @@ export default function Issue() {
                 <img src={linkImg} alt='' />
                 {copy ? "Link Copied" : "Copy Link"}
               </button>
-              <button onClick={deleteIssueConfirm}>
-                <img src={binImg} alt='' />
-              </button>
+              {user.role !== "Client" && (
+                <button onClick={deleteIssueConfirm}>
+                  <img src={binImg} alt='' />
+                </button>
+              )}
             </div>
           </header>
           <div className='issue-main d-flex'>
