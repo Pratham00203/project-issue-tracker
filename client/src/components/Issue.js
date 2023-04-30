@@ -89,6 +89,7 @@ export default function Issue() {
         setComments((prev) => {
           return [...prev, res.data.newComment];
         });
+        console.log(comments);
         commentBody.current.value = "";
       }
     } catch (error) {
@@ -112,19 +113,18 @@ export default function Issue() {
       console.log(error);
     }
   };
-  const deleteComment = async (comment) => {
+  const deleteComment = async (commentid) => {
     try {
       const res = await axios({
         method: "delete",
-        url: `https://trackify-backend.onrender.com/api/issue/${issueid}/delete/comment/${comment._id}`,
+        url: `https://trackify-backend.onrender.com/api/issue/${issueid}/delete/comment/${commentid}`,
         headers: {
           "x-auth-token": localStorage.getItem("token"),
         },
       });
 
-      console.log(res.data);
       setComments((prev) => {
-        return prev.filter((c) => c._id !== comment._id);
+        return prev.filter((c) => c._id !== commentid);
       });
     } catch (error) {
       console.log(error);
@@ -250,7 +250,7 @@ export default function Issue() {
                           </p>
                           <p className='comment-body'>{c.commentBody}</p>
                           {c.userId === user.id && (
-                            <button onClick={() => deleteComment(c)}>
+                            <button onClick={() => deleteComment(c._id)}>
                               Delete
                             </button>
                           )}
